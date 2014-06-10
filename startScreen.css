@@ -1,5 +1,5 @@
 ﻿body {
-    background-image:url("bling-background.png");   
+    background-image:url("images/bling-background.png");   
 }
 
 #canvas {
@@ -10,7 +10,7 @@
     padding-right: 0;
     margin-left: auto;
     margin-right: auto;
-    margin-top: auto;
+    margin-top: 120px;
     margin-bottom: auto;
     display: block;
     
