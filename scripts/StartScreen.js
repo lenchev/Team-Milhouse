@@ -10,7 +10,7 @@
         chooseDiff: 'images/chooseDiff.png'
     };
     
-    function loadImages(sources, drowImages) {
+    function loadImages(sources, drawImages) {
         var images = {},
             loadedImages = 0,
             numImages = 0;
@@ -22,7 +22,7 @@
             images[src] = new Image();
             images[src].onload = function () {
                 if (++loadedImages >= numImages) {
-                    drowImages(images);
+                    drawImages(images);
                 }
             };
             images[src].src = sources[src];
