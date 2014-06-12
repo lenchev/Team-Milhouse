@@ -61,6 +61,12 @@
             stage.draw();
         });
 
+        lameImg.on('click', function () {
+            alert('You clicked on the lame !');
+            // start playing level 1
+            // makePlayfield(1);
+        });
+
         lameImg.position({ x: 156, y: 225 });
         layer.add(lameImg);
 
@@ -86,6 +92,12 @@
             this.scale({ x: 1, y: 1 });
             document.body.style.cursor = 'default';
             stage.draw();
+        });
+
+        decentImg.on('click', function () {
+            alert('Nice try !');
+            // start playing level 2
+            // makePlayfield(2);
         });
 
         decentImg.position({ x: 447, y: 225 });
@@ -115,6 +127,12 @@
             this.scale({ x: 1, y: 1 });
             document.body.style.cursor = 'default';
             stage.draw();
+        });
+
+        proImg.on('click', function () {
+            alert('Ooh c\'mon bro you aren\'t soo good!');
+            // start playing level 3
+            // makePlayfield(3);
         });
 
         proImg.position({ x: 738, y: 225 });
