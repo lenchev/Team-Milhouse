@@ -1,8 +1,9 @@
-body {
+﻿body {
   background-image: url("../images/phone.jpg");
 }
 #startScreen,
-#container {
+#container,
+#presents {
   display: block;
   margin: 30px auto auto auto;
   padding: 0px;
@@ -10,4 +11,6 @@ body {
   background: white;
   border: 1px solid black;
   border-radius: 20px;
+  width: 900px;
 }
+/*# sourceMappingURL=startScreen.css.map */

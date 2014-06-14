@@ -218,10 +218,17 @@ window.onload = function () {
 
     presents.fadeIn(5000);
 
-    presents.on('click', function () {
-        presents.fadeOut(0),
-        Load();
-    });
+    //presents.on('click', function () {
+    //    presents.fadeOut(0),
+    //    Load();
+    //});
+
+    setTimeout(function () {
+        presents.on('click', function () {
+            presents.fadeOut(0),
+            Load();
+        })
+    }, 5000);
 
 
     function Load() {
