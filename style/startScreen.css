@@ -1,20 +1,13 @@
-﻿body {
-    background-image: url(../images/phone.jpg);
+body {
+  background-image: url("../images/phone.jpg");
 }
-
+#startScreen,
 #container {
-    background: white;
-    opacity:0.9;
-    border-radius:20px;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    width: 900px;
-    height: 700px;
-    margin-right: auto;
-    margin-top: 100px;
-    margin-bottom: auto;
-    display: block;
-    border: 1px solid black;
-    
+  display: block;
+  margin: 30px auto auto auto;
+  padding: 0px;
+  opacity: 0.9;
+  background: white;
+  border: 1px solid black;
+  border-radius: 20px;
 }
