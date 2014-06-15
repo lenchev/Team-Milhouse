@@ -10,19 +10,12 @@
     var presents = $('#presents');
     presents.css('display', 'block').hide();
 
-    presents.fadeIn(3000);
+    presents.fadeIn(5000);
 
-    //presents.on('click', function () {
-    //    presents.fadeOut(0),
-    //    Load();
-    //});
-
-    setTimeout(function () {
-        presents.on('click', function () {
-            presents.fadeOut(0),
-            Load();
-        })
-    }, 3000);
+    presents.on('click', function () {
+        presents.fadeOut(0),
+        Load();
+    });
 
 
     function Load() {
@@ -32,12 +25,6 @@
         container.setAttribute('width', 900);
         container.setAttribute('height', 700);
         document.body.appendChild(container);
-
-        //    var cvs = document.createElement('canvas');
-        //    cvs.setAttribute('id', 'startScreen');
-        //    cvs.setAttribute('width', 900);
-        //    cvs.setAttribute('height', 700);
-        //    document.body.appendChild(cvs);
 
         var sources = {
             lameNoText: 'images/levelLameNoText.png',

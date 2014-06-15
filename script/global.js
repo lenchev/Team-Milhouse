@@ -1,6 +1,6 @@
 ﻿var level, //of difficult 0, 1 or 2
     remaining, //for countdown timer, begin with full time of current level of difficult (selected at the beginning)
-    intervalAfterAnswered = 1000, //time for see right answer and special animations (bart and both healths)
+    intervalAfterAnswered = 1500, //time for see right answer and special animations (bart and both healths)
 
     player = 0, //current player 0 or 1, but actually begin  (1 - initialPlayer)
     answered = false, //true or false if current player is already selected one of possible answers
@@ -12,19 +12,20 @@
         defaultPoints: 100,
 
         changePlayerPointsByTrue: 0,
-        changeOppositePointsByTrue: -20,
+        changeOppositePointsByTrue: -25,
 
-        changePlayerPointsByFalse: -20,
+        changePlayerPointsByFalse: -25,
         changeOppositePointsByFalse: 0,
 
-        changePlayerPointsByTimesUp: -10,
+        changePlayerPointsByTimesUp: -15,
         changeOppositePointsByTimesUp: 0
     },
 
     totalPoints = [points.defaultPoints, points.defaultPoints]; //total points of both players
 
 //playfield dimensions
-var playfieldWidth = 1000;
+var playfieldWidth = 1000,
+    commonDistanceBetweenEveryTwoFrames = 3;
 
 //timer field
 var timer = {
@@ -32,38 +33,62 @@ var timer = {
     y: 50,
     width: 700,
     height: 70,
+    r: 50,
 
-    fullTime: [3, 5, 7],
+    fullTime: [10, 7, 5],
     atBeginning: 'Timer',
     remaining: 'remainig: ',
     up: "Time's up!",
 
     fill: 'white',
-    opacity: 0.9,
+    stroke: 'white',
+    strokeWidth: 1,
+    opacity: 0.5,
+
+    textAnchor: 'middle',
+    textFill: 'red',
+    textStroke: 'black',
     fontSize: 35
 };
 
 // field
 var questions = {
     x: timer.x,
-    y: timer.y + timer.height,
+    y: timer.y + timer.height + commonDistanceBetweenEveryTwoFrames,
     width: timer.width,
-    height: 100,
+    height: 120,
+    r: 0,
 
     fill: 'white',
-    opacity: 0.9,
-    fontSize: 35
+    stroke: 'blue',
+    strokeWidth: 1,
+    opacity: 0.0,
+    fontSize: 20
+};
+
+//foeach question
+var question = {
+    width: 700,
+    height: 70,
+
+    textAnchor: 'start',
+    fill: '#A00005',
+    stroke: '#A00005',
+    fontSize: 30
 };
 
 //answers field
 var answers = {
     x: questions.x,
-    y: questions.y + questions.height,
+    y: questions.y + questions.height + commonDistanceBetweenEveryTwoFrames,
     width: questions.width,
     height: 90,
+    r: 50,
 
     fill: 'white',
-    opacity: 0.9
+    stroke: 'green',
+    strokeWidth: 1,
+    opacity: 0.5
 };
 
 //foeach answer
@@ -71,33 +96,46 @@ var answer = {
     width: 50,
     height: 30,
 
-    fill: '#A00005',
-    stroke: '#A00005',
-    fontSize: 40,
+    textAnchor: 'middle',
 
-    overFill: '#FF0008',
-    overStroke: '#FF0008',
-    overFontSize: 50,
+    strokeWidth: 1.5,
 
-    selectedTrueFill: 'blue',
-    selectedTrueStroke: 'blue',
-    selectedTrueFontSize: 50,
+    fill: 'white',
+    stroke: 'dodgerblue',
+    fontSize: 30,
 
-    selectedFalseFill: '#FF0008',
-    selectedFalseStroke: '#FF0008',
-    selectedFalseFontSize: 50,
+    overFill: 'white',
+    overStroke: 'black',
+    overFontSize: 35,
 
-    //selectedFalseFill: 'gray',
-    //selectedFalseStroke: 'violet',
-    //selectedFalseFontSize: 45
+    selectedTrueFill: 'white',
+    selectedTrueStroke: 'green',
+    selectedTrueFontSize: 35,
+
+    selectedFalseFill: 'white',
+    selectedFalseStroke: 'red',
+    selectedFalseFontSize: 35,
+
+    selectedRightFill: 'white',
+    selectedRightStroke: 'green',
+    selectedRightFontSize: 35
 };
+
+var allBartFrames = [],
+    numberOfAllBartFrames = 25;
+for (var i = 1; i <= numberOfAllBartFrames; i++) {
+    allBartFrames.push('images/Bart animation frames/simpson100' + (i < 10 ? '0' : '') + i + '.png');
+}
 
 //bart field
 var bart = {
-    x: timer.x + timer.width,
+    x: timer.x + timer.width + commonDistanceBetweenEveryTwoFrames,
     y: timer.y,
-    width: playfieldWidth - timer.width,
-    height: timer.height + questions.height + answers.height,
+    width: playfieldWidth - timer.width - commonDistanceBetweenEveryTwoFrames,
+    height: timer.height + questions.height + commonDistanceBetweenEveryTwoFrames + answers.height + commonDistanceBetweenEveryTwoFrames,
+
+    currentFrame: 0,
+    changeSpeed: 10,
 
     fill: 'white',
     opacity: 0.9,
@@ -107,13 +145,37 @@ var bart = {
 //health field
 var health = {
     x: timer.x,
-    y: answers.y + answers.height,
+    y: answers.y + answers.height + commonDistanceBetweenEveryTwoFrames,
     width: playfieldWidth,
     height: 50,
 
-    fill: 'white',
-    opacity: 0.9,
-    fontSize: 30
+    fill: 'red',
+    stroke: 'blue',
+    strokeWidth: 2,
+    opacity: 1,
+
+    textAnchor: 'middle',
+    fontSize: 30,
+
+    upOrDownWhiteSpaceHeight: 5,
+    //blockHeight: health.height - 2 * health.upOrDownWhiteSpaceHeight,
+    leftOrRightWhiteSpaceWidth: 10,
+    distanceBetweenHealthBlocks: 100,
+    //blockWidth: (playfieldWidth - 2 * health.leftOrRightWhiteSpaceWidth - health.distanceBetweenHealthBlocks) / 2
+}
+
+//end image in rectangle
+var endGame = {
+    x: timer.x - 1,
+    y: timer.y - 1,
+    //width: document.documentElement.clientHeight/2,
+    width: timer.width + commonDistanceBetweenEveryTwoFrames + bart.width + 1,
+    height: timer.height + questions.height + answers.height + health.height + 3 * commonDistanceBetweenEveryTwoFrames + 1,
+
+    r: 20,
+    stroke: 'black',
+    strokeWidth: 1,
+    opacity: 1
 }
 
 //extend for adding className to Raphael element

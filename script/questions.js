@@ -8,7 +8,7 @@ function QuestionsWithPossibleAnswers(question, answers, rightIndex) {
     this.rightIndex = rightIndex;
 }
 
-var allQuestionsWithPossibleAnswers = [
+var allQuestionsWithPossibleAnswersT = [
     new QuestionsWithPossibleAnswers('question01',
         ['true', 'false', 'false'], 0),
     new QuestionsWithPossibleAnswers('question02',
@@ -20,6 +20,28 @@ var allQuestionsWithPossibleAnswers = [
     new QuestionsWithPossibleAnswers('question05',
         ['true', 'false', 'false'], 0)
 ],
+allQuestionsWithPossibleAnswers = [
+    new QuestionsWithPossibleAnswers('Loc it\'s on for the two-triple-oh\nComin\' real, it\'s the next...',
+        ['railroad', 'episode', 'tetrapode'], 1),
+    new QuestionsWithPossibleAnswers('I\'m representing for them gangstas all \nacross the world Still hitting them corners\n in them lo-lo\'s, ...',
+        ['girl', 'squirrel'], 0),
+    new QuestionsWithPossibleAnswers('Don\'t push me cause I\'m close to the edge\nI\'m trying not to lose my...',
+        ['head', 'bread', 'bed'], 0),
+    new QuestionsWithPossibleAnswers('You gotta fight for your right to...',
+        ['ante', 'party'], 1),
+    new QuestionsWithPossibleAnswers('Now let me welcome everybody\nto the wild, wild...',
+        ['next', 'breast', 'west'], 2),
+    new QuestionsWithPossibleAnswers('Stop, drop, shut \'em down open up shop\nOh, no, that\'s how Ruff Ryders...',
+        ['fart', 'roll', 'go'], 1),
+    new QuestionsWithPossibleAnswers('Y\'all niggas had enough?\nGimme some...',
+        ['more', 'ore'], 0),
+    new QuestionsWithPossibleAnswers('Greetings, earthlings\nWe have now taken over your...',
+        ['radio', 'ratio', 'bungalow'], 0),
+    new QuestionsWithPossibleAnswers('Keep spending most our lives\nLivin\'in a gangsta\'s...',
+        ['merchandise', 'edelweiss', 'paradise'], 2),
+    new QuestionsWithPossibleAnswers('What ya\'ll wanna do? Don\'t you know\nWe always coming through, me and my...',
+        ['zoo', 'crew', 'brew'], 1)
+];
     numberOfAllQuestionsWithPossibleAnswers = allQuestionsWithPossibleAnswers.length,
     maxPossibleAnswersPerQuestion = 0,
     currentPossibleAnswers = 0;
@@ -59,26 +81,3 @@ function getQuestionWithPossibleAnswers() {
 
     return question;
 }
-
-var allQuestionsWithPossibleAnswers = [
-    new QuestionsWithPossibleAnswers('Loc it\'s on for the two-triple-oh\nComin\' real, it\'s the next...',
-        ['railroad', 'episode', 'tetrapode'], 1),
-    new QuestionsWithPossibleAnswers('I\'m representing for them gangstas all across the world\nStill hitting them corners in them lo-lo\'s, ...',
-        ['girl', 'squirrel'], 0),
-    new QuestionsWithPossibleAnswers('Don\'t push me cause I\'m close to the edge\nI\'m trying not to lose my...',
-        ['head', 'bread', 'bed'], 0),
-    new QuestionsWithPossibleAnswers('You gotta fight for your right to...',
-        ['ante', 'party'], 1),
-    new QuestionsWithPossibleAnswers('Now let me welcome everybody\nto the wild, wild...',
-        ['next', 'breast', 'west'], 2),
-    new QuestionsWithPossibleAnswers('Stop, drop, shut \'em down open up shop\nOh, no, that\'s how Ruff Ryders...',
-        ['fart', 'roll', 'go'], 1),
-    new QuestionsWithPossibleAnswers('Y\'all niggas had enough?\nGimme some...',
-        ['more', 'ore'], 0),
-    new QuestionsWithPossibleAnswers('Greetings, earthlings\nWe have now taken over your...',
-        ['radio', 'ratio', 'bungalow'], 0),
-    new QuestionsWithPossibleAnswers('Keep spending most our lives\nLivin\'in a gangsta\'s...',
-        ['merchandise', 'edelweiss', 'paradise'], 2),
-    new QuestionsWithPossibleAnswers('What ya\'ll wanna do? Don\'t you know\nWe always coming through, me and my...',
-        ['zoo', 'crew', 'brew'], 1)
-];
