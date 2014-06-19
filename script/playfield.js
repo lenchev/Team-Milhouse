@@ -2,6 +2,7 @@
 /// <reference path="questions.html"/>
 /// <reference path="bart.html"/>
 /// <reference path="healths.html"/>
+/// <reference path="raphael.js" />
 /// <reference path="global.js"/>
 
 //global variables
@@ -22,7 +23,11 @@ var timerForm,
     countdownTimer,
     bartFrameChanger,
 
-    newQuestionWithPossibleAnswers;
+    newQuestionWithPossibleAnswers,
+
+    playersHealthBoxes,
+    playerOneHealthAnimation,
+    playerTwoHealthAnimation;
 
 //countdown timer
 function countdown() {
@@ -107,11 +112,12 @@ function setNewQuestion() {
     //checks by points for change animation and game ending
     healthContainer0.attr({
         text: totalPoints[0]
-    });
+    });    
 
     healthContainer1.attr({
         text: totalPoints[1]
     });
+
 
     if (totalPoints[0] <= 0) {
         setEndGame(false);
@@ -122,12 +128,13 @@ function setNewQuestion() {
         return;
     }
 
-    //player = 1 - player;
+    newHealthBoxesAnumation(playerOneHealthAnimation, 450 * totalPoints[0] / 100);
+    newHealthBoxesAnumation(playerTwoHealthAnimation, 450 * totalPoints[1] / 100);
+
     answered = false;
 
     remaining = timer.fullTime[level] + 1;
 
-    //countdownTimer = jQuery.extend(true, {}, countdownTimerGeneral); //deep copy of countdownTimerGeneral, but it already no exist
     countdownTimer = setInterval(function () {
         countdown();
     }, 1000);
@@ -163,8 +170,6 @@ function setNewQuestion() {
 }
 
 function removeAllBodyElementsWithout(stayElements) {
-    //var startScreen = document.getElementById('startScreen');
-    //startScreen.parentNode.removeChild(startScreen);
 
     var child = document.body.firstChild,
         nextSibling,
@@ -344,7 +349,7 @@ function setAnswerFrame() {
                 }
             }
 
-            clearInterval(countdownTimer); //ще се премести на друго място точно преди края на играта!
+            clearInterval(countdownTimer);
 
             //change points
             //animations
@@ -362,13 +367,6 @@ function setAnswerFrame() {
 
 function setBartFrame() {
     bartForm = Raphael(bart.x, bart.y, bart.width, bart.height);
-
-    //bartForm.rect(0, 0, bart.width, bart.height).attr({ fill: bart.fill });
-    //bartContainer = bartForm.text(bart.width / 2, bart.height / 2, "Bart: Animations")
-    //.attr({
-    //    'font-size': bart.fontSize,
-    //    'text-anchor': 'middle'
-    //});
 
     bartContainer = bartForm.image(allBartFrames[bart.currentFrame], 0, 0, bart.width, bart.height);
 
@@ -404,10 +402,6 @@ function setHealthFrame() {
             'text-anchor': health.textAnchor
         });
 }
-
-
-
-
 
 var healthPositionX = health.leftOrRightWhiteSpaceWidth;
 var healthPositionY = health.upOrDownWhiteSpaceHeight;
@@ -493,14 +487,13 @@ function setHealthFrameUpd() {
     createHealthBlock(healthPositionX, healthPositionY, healthWidth, healthHeight); // create Player health block
     createHealthBlock(healthPositionX + healthWidth + distanceBetweenTheTwoHealthBlocks, healthPositionY, healthWidth, healthHeight); // create enemey health block
 
-    renderHealthDamage(isThePlayersAnswerWrong, playerWrongAnswers, enemyWrongAnswers, distanceBetweenTheTwoHealthBlocks); // render the reduced health 
-
+    renderHealthDamage(isThePlayersAnswerWrong, playerWrongAnswers, enemyWrongAnswers, distanceBetweenTheTwoHealthBlocks); // render the reduced health
+    console.log('playerWrongAnswers');
+    console.log(playerWrongAnswers);
+    console.log('enemyWrongAnswers');
+    console.log(enemyWrongAnswers);
     stage.add(layer);
 }
-
-
-
-
 
 //initialize playfield
 function makePlayfield(difficult) {
@@ -514,11 +507,9 @@ function makePlayfield(difficult) {
     setQuestionFrame();
     setAnswerFrame();
     setBartFrame();
+    newHealthBoxes();
     setHealthFrame();
-
-    //work on
-    //setHealthFrameUpd();
-
+    
     setNewQuestion();
 }
 
@@ -544,7 +535,7 @@ function setEndGame(winGame) {
 
     endGameImage.addClass('endGame');
 
-    endGameForm.rect(70, 0, 900, 700)
+    endGameForm.rect(70, 0, 830, 700)
         .attr({
             r: 20,
             stroke: endGame.stroke,
@@ -555,4 +546,39 @@ function setEndGame(winGame) {
     endGameImage.click(function () {
         makePlayfield(level);
     });
+}
+
+function newHealthBoxes() {
+    playersHealthBoxes = Raphael(50, 340, 1000, 50);
+    var playersHealthFrames = Raphael(50, 340, 1000, 50);
+
+    playersHealthFrames.rect(0, 0, 450, playersHealthFrames.height).attr({
+        stroke: 'black',
+        'stroke-width': 8,
+        r: 15,
+    })
+
+    playerOneHealthAnimation = playersHealthBoxes.rect(0, 0, 450, playersHealthBoxes.height).attr({
+        fill: 'green',
+        stroke: '',
+        r: 15,
+    })
+
+    playersHealthFrames.rect(550, 0, 450, playersHealthFrames.height).attr({
+        stroke: 'black',
+        'stroke-width': 8,
+        r: 15,
+    })
+
+    playerTwoHealthAnimation = playersHealthBoxes.rect(550, 0, 450, playersHealthBoxes.height).attr({
+        fill: 'green',
+        stroke: '',
+        r: 15,
+    })
+}
+
+function newHealthBoxesAnumation(player, level) {
+    player.animate({
+        width: level
+    }, 700)
 }

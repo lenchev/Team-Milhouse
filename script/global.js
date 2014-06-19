@@ -6,7 +6,7 @@
     answered = false, //true or false if current player is already selected one of possible answers
     selectedAnswer, //selected answer
     truenessOfSelectedAnswer, //true, false, null (by time up)
-
+    
     //default points and change players' points by ... depend his answer or time up
     points = {
         defaultPoints: 100,
@@ -43,7 +43,7 @@ var timer = {
     fill: 'white',
     stroke: 'white',
     strokeWidth: 1,
-    opacity: 0.5,
+    opacity: 0.7,
 
     textAnchor: 'middle',
     textFill: 'red',
@@ -57,12 +57,12 @@ var questions = {
     y: timer.y + timer.height + commonDistanceBetweenEveryTwoFrames,
     width: timer.width,
     height: 120,
-    r: 0,
+    r: 20,
 
     fill: 'white',
     stroke: 'blue',
     strokeWidth: 1,
-    opacity: 0.0,
+    opacity: 0.5,
     fontSize: 20
 };
 
@@ -83,7 +83,7 @@ var answers = {
     y: questions.y + questions.height + commonDistanceBetweenEveryTwoFrames,
     width: questions.width,
     height: 90,
-    r: 50,
+    r: 30,
 
     fill: 'white',
     stroke: 'green',
@@ -152,30 +152,29 @@ var health = {
     fill: 'red',
     stroke: 'blue',
     strokeWidth: 2,
-    opacity: 1,
+    opacity: 0,
 
     textAnchor: 'middle',
     fontSize: 30,
 
     upOrDownWhiteSpaceHeight: 5,
-    //blockHeight: health.height - 2 * health.upOrDownWhiteSpaceHeight,
-    leftOrRightWhiteSpaceWidth: 10,
+    leftOrRightWhiteSpaceWidth: 0,
     distanceBetweenHealthBlocks: 100,
-    //blockWidth: (playfieldWidth - 2 * health.leftOrRightWhiteSpaceWidth - health.distanceBetweenHealthBlocks) / 2
 }
 
 //end image in rectangle
 var endGame = {
     x: timer.x - 1,
     y: timer.y - 1,
-    //width: document.documentElement.clientHeight/2,
+    width: document.documentElement.clientHeight/2,
     width: timer.width + commonDistanceBetweenEveryTwoFrames + bart.width + 1,
     height: timer.height + questions.height + answers.height + health.height + 3 * commonDistanceBetweenEveryTwoFrames + 1,
 
     r: 20,
     stroke: 'black',
     strokeWidth: 1,
-    opacity: 1
+    fill: 'white',
+    opacity: 0.5
 }
 
 //extend for adding className to Raphael element
