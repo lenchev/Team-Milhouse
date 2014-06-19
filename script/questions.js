@@ -50,13 +50,13 @@ allQuestionsWithPossibleAnswers = [
          new QuestionsWithPossibleAnswers('War of the masses, the outcome disastrous\nMany of the victim family save they...',
         ['arses', 'ashes', 'matches'], 1),
          new QuestionsWithPossibleAnswers('D.P.\'s got that crazy shit\nWe keep it crunked-up, John Blazed and...',
-        ['shit', 'Smith'], 0),
+        ['sh*t', 'Smith'], 0),
          new QuestionsWithPossibleAnswers('Can I kick it? (Yes, you can!)\nWell, I\'m gone (Go on...)',
         ['man', 'then', 'Stan'], 1),
          new QuestionsWithPossibleAnswers('Just see him in the drive way,\nGettin beat like a smoka fool \'cuz it\'s....',
         ['payday', 'Mayday', 'Friday'], 2),
          new QuestionsWithPossibleAnswers('If you\'re having girl problems I feel bad for you, son\nI\'ve got 99 problems but a ... ain\'t one',
-        ['b*tch', 'pitch', 'stich'], 1)
+        ['b*tch', 'pitch', 'stich'], 0)
 ];
 numberOfAllQuestionsWithPossibleAnswers = allQuestionsWithPossibleAnswers.length,
 maxPossibleAnswersPerQuestion = 0,
