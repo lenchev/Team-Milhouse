@@ -40,11 +40,27 @@ allQuestionsWithPossibleAnswers = [
     new QuestionsWithPossibleAnswers('Keep spending most our lives\nLivin\'in a gangsta\'s...',
         ['merchandise', 'edelweiss', 'paradise'], 2),
     new QuestionsWithPossibleAnswers('What ya\'ll wanna do? Don\'t you know\nWe always coming through, me and my...',
-        ['zoo', 'crew', 'brew'], 1)
+        ['zoo', 'crew', 'brew'], 1),
+        new QuestionsWithPossibleAnswers('Ya see, I\'m Irish, but I\'m not a leprechaun\nYou wanna fight, then step up and we\'ll get it...',
+        ['gone', 'on', 'blown'], 1),
+        new QuestionsWithPossibleAnswers('You down with OPP (Yeah you know me)\nWho\'s down with OPP (Every last ...)',
+        ['homie', 'mommy', 'ponny'], 0),
+         new QuestionsWithPossibleAnswers('Rollin down the street, smokin indo, sippin on gin and ...',
+        ['goose', 'booze', 'juice'], 2),
+         new QuestionsWithPossibleAnswers('War of the masses, the outcome disastrous\nMany of the victim family save they...',
+        ['arses', 'ashes', 'matches'], 1),
+         new QuestionsWithPossibleAnswers('D.P.\'s got that crazy shit\nWe keep it crunked-up, John Blazed and...',
+        ['shit', 'Smith'], 0),
+         new QuestionsWithPossibleAnswers('Can I kick it? (Yes, you can!)\nWell, I\'m gone (Go on...)',
+        ['man', 'then', 'Stan'], 1),
+         new QuestionsWithPossibleAnswers('Just see him in the drive way,\nGettin beat like a smoka fool \'cuz it\'s....',
+        ['payday', 'Mayday', 'Friday'], 2),
+         new QuestionsWithPossibleAnswers('If you\'re having girl problems I feel bad for you, son\nI\'ve got 99 problems but a ... ain\'t one',
+        ['b*tch', 'pitch', 'stich'], 1)
 ];
-    numberOfAllQuestionsWithPossibleAnswers = allQuestionsWithPossibleAnswers.length,
-    maxPossibleAnswersPerQuestion = 0,
-    currentPossibleAnswers = 0;
+numberOfAllQuestionsWithPossibleAnswers = allQuestionsWithPossibleAnswers.length,
+maxPossibleAnswersPerQuestion = 0,
+currentPossibleAnswers = 0;
 
 for (var i = 0; i < numberOfAllQuestionsWithPossibleAnswers; i++) {
     currentPossibleAnswers = allQuestionsWithPossibleAnswers[i].answers.length;
