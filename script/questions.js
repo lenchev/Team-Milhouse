@@ -45,7 +45,7 @@ allQuestionsWithPossibleAnswers = [
         ['gone', 'on', 'blown'], 1),
         new QuestionsWithPossibleAnswers('You down with OPP (Yeah you know me)\nWho\'s down with OPP (Every last ...)',
         ['homie', 'mommy', 'ponny'], 0),
-         new QuestionsWithPossibleAnswers('Rollin down the street, smokin indo, sippin on gin and ...',
+         new QuestionsWithPossibleAnswers('Rollin down the street, smokin indo, \nsippin on gin and ...',
         ['goose', 'booze', 'juice'], 2),
          new QuestionsWithPossibleAnswers('War of the masses, the outcome disastrous\nMany of the victim family save they...',
         ['arses', 'ashes', 'matches'], 1),
@@ -55,7 +55,7 @@ allQuestionsWithPossibleAnswers = [
         ['man', 'then', 'Stan'], 1),
          new QuestionsWithPossibleAnswers('Just see him in the drive way,\nGettin beat like a smoka fool \'cuz it\'s....',
         ['payday', 'Mayday', 'Friday'], 2),
-         new QuestionsWithPossibleAnswers('If you\'re having girl problems I feel bad for you, son\nI\'ve got 99 problems but a ... ain\'t one',
+         new QuestionsWithPossibleAnswers('If you\'re having girl problems I feel bad \nfor you, son I\'ve got 99 problems \nbut a ... ain\'t one',
         ['b*tch', 'pitch', 'stich'], 0)
 ];
 numberOfAllQuestionsWithPossibleAnswers = allQuestionsWithPossibleAnswers.length,
